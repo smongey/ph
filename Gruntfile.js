@@ -276,7 +276,7 @@ module.exports = function (grunt) {
           commit: true,
           push: true,
           message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%',
-          remote: 'git@github.com:smongey/post-holding.git',
+          remote: 'git@github.com:smongey/ph.git',
           branch: 'gh-pages'
         }
       }
@@ -287,19 +287,19 @@ module.exports = function (grunt) {
           patterns: [
             {
               match: /("|'?)\/?styles\//g,
-              replacement: '$1http://smongey.github.io/post-holding/styles/'
+              replacement: '$1http://smongey.github.io/ph/styles/'
             },
             {
               match: /("|'?)\/?scripts\//g,
-              replacement: '$1http://smongey.github.io/post-holding/scripts/'
+              replacement: '$1http://smongey.github.io/ph/scripts/'
             },
             {
               match: /(<a[^>]*href="?)(\/)/g,
-              replacement: '$1http://smongey.github.io/post-holding/'
+              replacement: '$1http://smongey.github.io/ph/'
             },
             {
               match: /(<form[^>]*action="?)(\/)/g,
-              replacement: '$1http://smongey.github.io/post-holding/'
+              replacement: '$1http://smongey.github.io/ph/'
             }
           ]
         },
