@@ -1,0 +1,229 @@
+/* Application Template
+ * -----------------------------------------------------------------------------
+ * Styling for the structure of the site. If your element doesn't show up on
+ * every page, it probably shouldn't be in this file.
+ * -----------------------------------------------------------------------------*/
+
+/* Things to place in separate files...
+ * ---------------------------------------------------------------------------
+ * /extends/            => Sass extends declarations
+ * /mixins/             => Sass mixins declarations
+ * _buttons.scss
+ * _fonts.scss          => Font imports
+ * _forms.scss
+ * _lists.scss
+ * _library.scss        => Custom classes used throughout the app.
+ * _tables.scss
+ * _typography.scss
+ * _utilities.scss
+ * _variables.scss
+ * _component_name.scss => Styles for a component of functionality (e.g. – modal).
+ * _page_name.scss      => Styles for page specific elements.
+ * ---------------------------------------------------------------------------
+ */
+@mixin rainbowed(){
+	@include background(linear-gradient(#bddeeb 0%,#bcb7d5 25%,#f0c9d7 50%,#f5f2ca 75%,#bddeeb 100%) repeat);
+	background-size: 2000px 2000px;
+	background-repeat: repeat;
+	background-position: 0px 0px;
+	overflow: hidden;
+	@include animation(rainbowed 60s linear 0s infinite);
+}
+
+@mixin rainbowedText(){
+	@include background(linear-gradient(darken(#bddeeb, 40%) 0%,darken(#bcb7d5, 40%) 25%,darken(#f0c9d7, 40%) 50%,darken(#f5f2ca, 40%) 75%,darken(#bddeeb, 40%) 100%) repeat);
+	background-size: 2000px 2000px;
+	background-repeat: repeat;
+	background-position: 0px 0px;
+	overflow: hidden;
+	@include animation(rainbowed 60s linear 0s infinite);
+	-webkit-background-clip: text; 
+	-webkit-text-fill-color: transparent;
+}
+
+$serif: 30px/38px 'EB Garamond', 'Times', serif;
+$smallserif: 18px/26px 'EB Garamond', 'Times', serif;
+$sans: bold 15px/17px 'Helvetica', Arial, sans-serif;
+
+* { @include box-sizing(border-box); -webkit-font-smoothing: antialiased; }
+
+::-moz-selection { background:#f99; color: #fff;}
+::selection      { background:#f99; color: #fff;}
+
+h1.logo {
+	font: $serif;
+	margin-bottom: 45px;
+	color: black;
+	width: 55px;
+	height: 30px;
+	text-indent: -9999px;
+	display: block;
+	background: url(../images/logo.png);
+	background: url(../images/logo.svg), none;
+}
+
+h2 {
+	font: $serif;
+	min-width: 480px;
+	width: 45%;
+	color: black;
+	@media screen and (max-width: 600px) {
+		min-width: 100%;
+		width: 100%;
+	} 
+	a {
+		margin-top: 40px;
+		color: black;
+		display: block;
+	}
+	a:hover {
+		@include rainbowedText();
+	}
+}
+
+a#workhere {
+	width: 115px;
+	height: 115px;
+	background: url(../images/job.png);
+	background: url(../images/job.svg), none;
+	position: absolute;
+	top: 50px;
+	right: 54px;
+	color: white;
+	text-align: center;
+	padding: em(45px) em(30px);
+	text-transform: uppercase;
+	font: $sans;
+	letter-spacing: 1px;
+	@media screen and (max-width: 600px) {
+		top: auto;
+		bottom: 25px; 
+		right: 25px;
+		@include transform(scale(0.8));
+	}
+}
+
+.main {
+
+	@include transition(all $ease-in-out-quart 0.5s);
+	background:#fff;
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding: em(50) em(60);
+	@media screen and (max-width: 600px) {
+		padding: em(30) em(40);
+	}
+	&.popped {
+		margin-left: -10vw;
+	}
+	a.maps {
+		position: absolute;
+		bottom: 55px;
+		font: $smallserif;
+		color: black;
+	}
+	a.maps:hover {
+		@include rainbowedText();
+	}
+}
+
+
+.job {
+	@include transition(all $ease-in-out-quart 0.5s);
+	@include rainbowed();
+	cursor: url(../images/cursor.svg), auto;
+	font: $smallserif;
+	width: 40vw;
+	height: 100vh;
+	position: fixed;
+	left: 100vw;
+	top: 0;
+	padding: em(50) em(85) em(50) em(55);
+	@media screen and (max-width: 600px) {
+		padding: em(30) em(75) em(30) em(40);
+		width: 100vw;
+	}
+	@media screen and (min-width: 600px) and (max-width: 900px) {
+		width: 70vw;
+	}
+	p { 
+		@include transition( opacity .6s ease .4s, padding .6s ease .4s);
+		opacity: 0;
+		padding-top: 5px;
+	}
+	a { color:black; }
+	
+	a:hover {
+		@include rainbowedText();
+	}
+
+	span {
+		font: $sans;
+		position: absolute;
+		right:0px;
+		@include transform(rotate(90deg));
+		top: calc(50vh - 10px);
+	}
+	&:hover {
+
+	}
+	&.popped {
+		margin-left: -40vw;
+		p {
+			opacity: 1;
+			color: black;
+			padding-top: 0px;
+		}
+		@media screen and (max-width: 600px) {
+			margin-left: -100vw;
+		}
+		@media screen and (min-width: 600px) and (max-width: 900px) {
+			margin-left: -70vw;
+		}
+	}	
+}
+
+
+
+//@include transition(all ease .2s); 
+// p { 
+// 	background-image: linear-gradient(135deg, #bddeeb 0%,#bcb7d5 33%,#f0c9d7 66%,#f5f2ca 100%);
+// 	-webkit-background-clip: text; 
+// 	-webkit-text-fill-color: transparent;
+// }
+
+@-webkit-keyframes rainbowed {
+	0% { background-position: 0px 0px; }
+	100% { background-position: 0px 10000px;}
+}
+
+//@include background(linear-gradient(135deg, #bddeeb 0%,#bcb7d5 25%,#f0c9d7 50%,#f5f2ca 75%,#bddeeb 100%) repeat);
+
+// @-webkit-keyframes rainbowed {
+//     0%   {
+// 		@include background-image(linear-gradient(135deg, #bddeeb 0%,#bcb7d5 33%,#f0c9d7 66%,#f5f2ca 100%));
+// 	}
+//     25%  {
+//     	@include background-image(linear-gradient(135deg, #f5f2ca 0%,#bddeeb 33%,#bcb7d5 66%,#f0c9d7 100%));
+// 	}
+//     50%  {
+//     	@include background-image(linear-gradient(135deg, #f0c9d7 0%,#f5f2ca 33%,#bddeeb 66%,#bcb7d5 100%));
+// 	}
+// 	75% {
+// 		@include background-image(linear-gradient(135deg, #bcb7d5 0%,#f0c9d7 33%,#f5f2ca 66%,#bddeeb 100%));
+// 	}
+//     100% {
+// 		@include background-image(linear-gradient(135deg, #bddeeb 0%,#bcb7d5 33%,#f0c9d7 66%,#f5f2ca 100%));
+//     }
+// }
+
+
+
+
+
+
+
+
