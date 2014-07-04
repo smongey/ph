@@ -145,18 +145,23 @@ a#workhere {
 			margin-left: -100%;
 		}
 	}
-	a.maps {
+	div.maps {
 		position: absolute;
 		bottom: 55px;
-		font: $smallserif;
-		color: black;
+		a {
+			font: $smallserif;
+			color: black;
+			padding-right: 20px;
+		}	
 		@media only screen and (min-device-width : 320px) and (max-device-width : 568px) {
 			position: fixed;
 			bottom: 20px;
-			font-size: 16px;
+			a {
+				font-size: 16px;
+			}
 		}
 	}
-	a.maps:hover {
+	div.maps a:hover {
 		@include rainbowedText();
 	}
 }
