@@ -22,7 +22,7 @@
  * ---------------------------------------------------------------------------
  */
 @mixin rainbowed(){
-	@include background(linear-gradient(#bddeeb 0%,#bcb7d5 25%,#f0c9d7 50%,#f5f2ca 75%,#bddeeb 100%) repeat);
+	@include background(linear-gradient(0deg, #bddeeb 0%,#bcb7d5 25%,#f0c9d7 50%,#f5f2ca 75%,#bddeeb 100%) repeat);
 	background-size: 2000px 2000px;
 	background-repeat: repeat;
 	background-position: 0px 0px;
@@ -31,13 +31,15 @@
 }
 
 @mixin rainbowedText(){
-	@include background(linear-gradient(darken(#bddeeb, 40%) 0%,darken(#bcb7d5, 40%) 25%,darken(#f0c9d7, 40%) 50%,darken(#f5f2ca, 40%) 75%,darken(#bddeeb, 40%) 100%) repeat);
+	@include background(linear-gradient(0deg, darken(#bddeeb, 40%) 0%,darken(#bcb7d5, 40%) 25%,darken(#f0c9d7, 40%) 50%,darken(#f5f2ca, 40%) 75%,darken(#bddeeb, 40%) 100%) repeat);
 	background-size: 2000px 2000px;
 	background-repeat: repeat;
 	background-position: 0px 0px;
 	overflow: hidden;
+	color: #fff;
 	@include animation(rainbowed 60s linear 0s infinite);
-	-webkit-background-clip: text; 
+	-webkit-background-clip: text;
+	background-clip: text; 
 	-webkit-text-fill-color: transparent;
 }
 
@@ -174,6 +176,7 @@ a#workhere {
 
 
 .job {
+	@include background(linear-gradient(0deg, #bddeeb 0%,#bcb7d5 25%,#f0c9d7 50%,#f5f2ca 75%,#bddeeb 100%) repeat);
 	@include transition(all $ease-in-out-quart 0.5s);
 	@include rainbowed();
 	cursor: url(../images/cursor.svg), auto;
@@ -237,39 +240,11 @@ a#workhere {
 	}	
 }
 
-
-
-//@include transition(all ease .2s); 
-// p { 
-// 	background-image: linear-gradient(135deg, #bddeeb 0%,#bcb7d5 33%,#f0c9d7 66%,#f5f2ca 100%);
-// 	-webkit-background-clip: text; 
-// 	-webkit-text-fill-color: transparent;
-// }
-
-@-webkit-keyframes rainbowed {
+@include keyframes(rainbowed) {
 	0% { background-position: 0px 0px; }
 	100% { background-position: 0px 10000px;}
 }
 
-//@include background(linear-gradient(135deg, #bddeeb 0%,#bcb7d5 25%,#f0c9d7 50%,#f5f2ca 75%,#bddeeb 100%) repeat);
-
-// @-webkit-keyframes rainbowed {
-//     0%   {
-// 		@include background-image(linear-gradient(135deg, #bddeeb 0%,#bcb7d5 33%,#f0c9d7 66%,#f5f2ca 100%));
-// 	}
-//     25%  {
-//     	@include background-image(linear-gradient(135deg, #f5f2ca 0%,#bddeeb 33%,#bcb7d5 66%,#f0c9d7 100%));
-// 	}
-//     50%  {
-//     	@include background-image(linear-gradient(135deg, #f0c9d7 0%,#f5f2ca 33%,#bddeeb 66%,#bcb7d5 100%));
-// 	}
-// 	75% {
-// 		@include background-image(linear-gradient(135deg, #bcb7d5 0%,#f0c9d7 33%,#f5f2ca 66%,#bddeeb 100%));
-// 	}
-//     100% {
-// 		@include background-image(linear-gradient(135deg, #bddeeb 0%,#bcb7d5 33%,#f0c9d7 66%,#f5f2ca 100%));
-//     }
-// }
 
 
 
